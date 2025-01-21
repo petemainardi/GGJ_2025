@@ -13,6 +13,7 @@
 # Asset plugins, ignore in commits to avoid copyrighted redistribution issues
 [Aa]ssets/Plugins*
 [Aa]ssets/Packages*
+[Aa]ssets/TextMesh\ Pro*
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
