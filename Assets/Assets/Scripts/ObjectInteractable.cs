@@ -13,7 +13,7 @@ public class ObjectInteractable : MonoBehaviour, IInteractable
 
 public void Interact(Transform interactorTransform)
     {
-        Debug.Log("I am Box");
+        Debug.Log(interactText);
     }
 
 public string GetInteractText()
