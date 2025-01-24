@@ -57,13 +57,37 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
         }
-        else
+        else //check if placing object
         {
-            if (canDrop == true)
+            RaycastHit hit;
+            Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
+            if (Physics.Raycast(cameraTransform.position, forward, out hit, pickUpRange))
             {
-                //StopClipping(); //prevents object from clipping through walls
-                DropObject();
+                Debug.Log("Did hit something");
+                if (hit.transform.gameObject.tag == "placeableSpot")
+                {
+                    Debug.Log(hit.transform.gameObject);
+                    PlaceObject(hit.transform.gameObject);
+                }
+                else
+                {
+                    if (canDrop == true)
+                    {
+                        //StopClipping(); //prevents object from clipping through walls
+                        DropObject();
+                    }
+                }
+
             }
+            else
+            {
+                if (canDrop == true)
+                {
+                    //StopClipping(); //prevents object from clipping through walls
+                    DropObject();
+                }
+            }
+            
         }
         
     }
@@ -86,6 +110,17 @@ public class PlayerInteract : MonoBehaviour
     {
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        heldObj.layer = 0; //object assigned back to default layer
+        heldObjRb.isKinematic = false;
+        heldObj.transform.parent = null; //unparent object
+        heldObj = null; //undefine game object
+    }
+    void PlaceObject(GameObject placeSpotObj)
+    {
+        Debug.Log("PlacingObject");
+        //re-enable collision with player
+        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        heldObj.transform.position = placeSpotObj.transform.position;
         heldObj.layer = 0; //object assigned back to default layer
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
