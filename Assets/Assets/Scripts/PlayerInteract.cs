@@ -12,6 +12,8 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private Transform holdPos;
     [SerializeField] private Transform cameraTransform;
 
+    //IInteractable highlightInteractable;
+
     [SerializeField] private float throwForce = 500f; //force at which the object is thrown at
     [SerializeField] private float pickUpRange = 5f; //how far the player can pickup the object from
     private GameObject heldObj; //object which we pick up
@@ -27,7 +29,33 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
+        /*RaycastHit hit;
+        Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
+        if (Physics.Raycast(cameraTransform.position, forward, out hit, pickUpRange))
+        {
 
+
+            if (hit.transform.gameObject.TryGetComponent(out highlightInteractable))
+            {
+                highlightInteractable.Highlight();
+            }
+            else
+            {
+                if (highlightInteractable != null)
+                {
+                    highlightInteractable.UnHighlight();
+                    highlightInteractable = null;
+                }
+            }
+        }
+        else
+        {
+            if (highlightInteractable != null)
+            {
+                highlightInteractable.UnHighlight();
+                highlightInteractable = null;
+            }
+        }*/
     }
 
 

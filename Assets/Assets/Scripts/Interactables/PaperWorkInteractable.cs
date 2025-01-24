@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectInteractable : MonoBehaviour, IInteractable
+public class PaperWorkInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
     // Start is called before the first frame update
@@ -11,17 +11,19 @@ public class ObjectInteractable : MonoBehaviour, IInteractable
         
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
     public void Highlight()
     {
-        Renderer render = GetComponentInParent<Renderer>();
-        Material mat = render.material;
-        mat.SetInt("_LookingAt", 1);
+
     }
     public void UnHighlight()
     {
-        Renderer render = GetComponentInParent<Renderer>();
-        Material mat = render.material;
-        mat.SetInt("_LookingAt", 0);
+
     }
 
     public void Interact(Transform interactorTransform)
@@ -29,9 +31,8 @@ public class ObjectInteractable : MonoBehaviour, IInteractable
         Debug.Log(interactText);
     }
 
-
-public string GetInteractText()
+    public string GetInteractText()
     {
-    return interactText; 
+        return interactText;
     }
 }

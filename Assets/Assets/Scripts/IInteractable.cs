@@ -6,4 +6,7 @@ public interface IInteractable
 {
     void Interact(Transform interactorTransform);
     string GetInteractText();
+
+    void Highlight();
+    void UnHighlight();
 }
