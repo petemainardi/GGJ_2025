@@ -33,14 +33,16 @@ public class PlayerInteract : MonoBehaviour
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
-
+        //Debug.DrawRay(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward) * 3, Color.green, 1);
         if (heldObj == null) //if currently not holding anything
         {
             RaycastHit hit;
             Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
+            Debug.DrawRay(cameraTransform.position, forward, Color.green, 1);
             if (Physics.Raycast(cameraTransform.position, forward, out hit, pickUpRange))
             {
-                
+
+
                 if (hit.transform.gameObject.TryGetComponent(out IInteractable interactable))
                 {
                     if (hit.transform.gameObject.tag == "canPickUp")
@@ -98,6 +100,7 @@ public class PlayerInteract : MonoBehaviour
         {
             heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
             heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
+            heldObj.GetComponent<Collider>().enabled = false;
             heldObjRb.isKinematic = true;
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
             heldObjRb.transform.position = holdPos.transform.position;
@@ -111,6 +114,7 @@ public class PlayerInteract : MonoBehaviour
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0; //object assigned back to default layer
+        heldObj.GetComponent<Collider>().enabled = true;
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
         heldObj = null; //undefine game object
@@ -121,6 +125,8 @@ public class PlayerInteract : MonoBehaviour
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.transform.position = placeSpotObj.transform.position;
+        heldObj.transform.rotation = placeSpotObj.transform.rotation;
+        heldObj.GetComponent<Collider>().enabled = true;
         heldObj.layer = 0; //object assigned back to default layer
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
