@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb628a668d7f46b419d7491c72798f35, type: 3}
+  m_Name: Default Dialogue Options
+  m_EditorClassIdentifier: 
+  <DemandsResponse>k__BackingField: 0
+  Options:
+  - Hi! What did you have for breakfast this morning?
+  - Did you see the weather today? It's a doozy!
+  - Workin hard or hardly workin amiright?
+  - Do these shoes make my feet look big?
+  - 'What did the thing say to the other...
+
+    No wait.. that''s not how it goes...
+
+    Oops
+    I forgot how to tell the joke!'
+  - Lisa in accounting told me that Bob in HR told her that he heard it from the
+    junior manager of sales audits that the assistant VP of product development was
+    out golfing with the CEO the other day, and got invited to the executive retreat
+    this year. They might be up for a promotion soon, better stay on their good side!
+  - 'Have you seen last quarter''s numbers?
+
+    Might have to work some overtime
+    this month.
+
+    Of course we don''t get paid overtime haha, but you know what
+    I mean.'
+  - Hey I think Dave was looking for you.
